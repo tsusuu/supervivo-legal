@@ -31,6 +31,7 @@ https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 ## 5. 문의와 개발자 정보
 
 - 앱 이용·오류 문의: help@devsworker.com
+- 전화: 010-2756-6258
 - 상호: Devsworker
 - 대표: 최영서
 - 사업자등록번호: 325-02-03929

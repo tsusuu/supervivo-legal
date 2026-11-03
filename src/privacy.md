@@ -87,6 +87,7 @@ Devsworker(대표 최영서, 이하 "개발자")는 iOS 앱 Supervivo(이하 "�
 
 - 개인정보 보호책임자: 최영서(Devsworker 대표)
 - 이메일: help@devsworker.com
+- 전화: 010-2756-6258
 
 개인정보 침해에 대한 신고나 상담은 아래 기관에도 할 수 있습니다.
 
