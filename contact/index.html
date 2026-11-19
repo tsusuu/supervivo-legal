@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervivo Contact</title>
+<style>
+:root { color-scheme: light dark; --fg: #1d1b26; --muted: #6d6a7c; --line: #e4e1ee; --accent: #2f6fe4; --bg: #fff; --field: #f6f5fa; --bad: #c8322b; }
+@media (prefers-color-scheme: dark) { :root { --fg: #ece9f5; --muted: #a39fb4; --line: #2f2b3d; --accent: #7fa8ff; --bg: #15131c; --field: #1e1b27; --bad: #ff7b72; } }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+main { max-width: 640px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 1.7em; line-height: 1.3; margin-bottom: .2em; }
+a { color: var(--accent); }
+nav, .note { font-size: .9em; color: var(--muted); }
+label { display: block; font-weight: 600; margin-top: 18px; }
+input, textarea { box-sizing: border-box; width: 100%; margin-top: 6px; padding: 10px 12px; font: inherit; color: inherit; background: var(--field); border: 1px solid var(--line); border-radius: 10px; }
+textarea { min-height: 180px; resize: vertical; }
+button { margin-top: 22px; padding: 12px 22px; font: inherit; font-weight: 600; color: #fff; background: var(--accent); border: 0; border-radius: 10px; cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+#status { margin-top: 16px; min-height: 1.7em; }
+#status.bad { color: var(--bad); }
+.langs { float: right; }
+</style>
+</head>
+<body><main>
+<nav><a href="../">Supervivo</a> <span class="langs"><a href="?lang=en">English</a> · <a href="?lang=de">Deutsch</a></span></nav>
+<h1 data-t="title">Contact</h1>
+<p data-t="intro">Questions, problems or feedback about Supervivo? Write to us here. We usually reply within a few days.</p>
+<form id="form" novalidate>
+  <label for="name" data-t="name">Name (optional)</label>
+  <input id="name" name="name" maxlength="100" autocomplete="name">
+  <label for="email" data-t="email">Your email (so we can reply)</label>
+  <input id="email" name="email" type="email" maxlength="254" required autocomplete="email">
+  <label for="message" data-t="message">Message</label>
+  <textarea id="message" name="message" maxlength="5000" required></textarea>
+  <div class="trap" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+  <button type="submit" data-t="send">Send</button>
+  <p id="status" role="status"></p>
+</form>
+<p class="note" data-t="privacy">We use your email and message only to answer you, and delete them one year after the matter is closed. See the <a href="../en/privacy/">privacy policy</a>. You can also email help@devsworker.com.</p>
+</main>
+<script>
+const ENDPOINT = "https://supervivo-contact.supervivo.workers.dev/contact";
+const T = {
+  en: {},
+  de: {
+    title: "Kontakt",
+    intro: "Fragen, Probleme oder Feedback zu Supervivo? Schreib uns hier. Wir antworten in der Regel innerhalb weniger Tage.",
+    name: "Name (optional)",
+    email: "Deine E-Mail-Adresse (für unsere Antwort)",
+    message: "Nachricht",
+    send: "Senden",
+    privacy: 'Wir verwenden deine E-Mail-Adresse und Nachricht nur, um dir zu antworten, und löschen sie ein Jahr nach Abschluss des Anliegens. Siehe <a href="../en/privacy/">Datenschutzerklärung</a>. Du kannst auch an <a href="mailto:help@devsworker.com">help@devsworker.com</a> schreiben.',
+  },
+};
+const S = {
+  en: { sending: "Sending…", sent: "Thanks! Your message was sent. We'll reply to your email.", email: "Please enter a valid email address.", message: "Please write a message (at least 5 characters).", rate: "Too many messages. Please try again in a minute.", fail: "Couldn't send. Please try again, or email help@devsworker.com." },
+  de: { sending: "Wird gesendet…", sent: "Danke! Deine Nachricht wurde gesendet. Wir antworten per E-Mail.", email: "Bitte gib eine gültige E-Mail-Adresse ein.", message: "Bitte schreib eine Nachricht (mindestens 5 Zeichen).", rate: "Zu viele Nachrichten. Bitte versuch es in einer Minute noch einmal.", fail: "Senden fehlgeschlagen. Bitte versuch es noch einmal oder schreib an help@devsworker.com." },
+};
+const asked = new URLSearchParams(location.search).get("lang");
+const lang = asked === "de" || asked === "en" ? asked : (navigator.language || "").toLowerCase().startsWith("de") ? "de" : "en";
+document.documentElement.lang = lang;
+for (const el of document.querySelectorAll("[data-t]")) { const v = T[lang][el.dataset.t]; if (v) el.innerHTML = v; }
+if (lang === "de") document.title = "Supervivo Kontakt";
+const started = Date.now();
+const form = document.getElementById("form"), status = document.getElementById("status"), button = form.querySelector("button");
+const say = (key, bad) => { status.textContent = S[lang][key]; status.className = bad ? "bad" : ""; };
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form));
+  if (!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(data.email.trim())) return say("email", true);
+  if (data.message.trim().length < 5) return say("message", true);
+  button.disabled = true; say("sending");
+  try {
+    const r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...data, lang, started }) });
+    if (r.ok) { form.reset(); say("sent"); return; }
+    say(r.status === 429 ? "rate" : "fail", true);
+  } catch { say("fail", true); }
+  button.disabled = false;
+});
+</script>
+</body>
+</html>

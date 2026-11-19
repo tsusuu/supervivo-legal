@@ -91,15 +91,18 @@ nav {{ font-size: .9em; color: var(--muted); }}
 NAV = '<a href="../">Supervivo</a>'
 
 
-def build(doc, folder, title):
+def build(doc, folder, title, lang="ko"):
     path = ROOT / folder / "index.html"
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(PAGE.format(lang="ko", title=title, nav=NAV, body=markdown((ROOT / "src" / doc).read_text().strip())))
+    path.write_text(PAGE.format(lang=lang, title=title, nav=NAV, body=markdown((ROOT / "src" / doc).read_text().strip())))
     print("wrote", path.relative_to(ROOT))
 
 
 build("privacy.md", "privacy", "Supervivo 개인정보 처리방침")
 build("terms.md", "terms", "Supervivo 이용 안내")
+# 해외(1.2.0): 영어 처리방침, 독일 Impressum. 문의 양식은 contact/index.html(손으로 쓴 페이지, 받는 서버는 supervivo-contact Worker)
+build("en/privacy.md", "en/privacy", "Supervivo Privacy Policy", "en")
+build("de/impressum.md", "de/impressum", "Supervivo Impressum", "de")
 (ROOT / "index.html").write_text(PAGE.format(lang="ko", title="Supervivo", nav="",
     body='<h1>Supervivo</h1><ul><li><a href="privacy/">개인정보 처리방침</a></li><li><a href="terms/">이용 안내</a></li>'
          '<li><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">이용약관(Apple 표준 사용권 계약)</a></li>'
