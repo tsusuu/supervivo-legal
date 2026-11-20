@@ -23,7 +23,7 @@ Email: help@devsworker.com
 |---|---|---|---|
 | App records: amounts and dates of spending and income, notes, categories, card names and payment days, loans, goals, fixed expenses, app settings | Calculating your daily budget and showing it in the app and widgets | Only on your device; never sent to us | We do not receive this data, so we do not process it as a controller |
 | Feedback email (optional): your email address, the message, and the app version and iOS version added to the email | Answering you and fixing problems | Our mailbox (see section 6) | Art. 6(1)(b) (handling your request) and Art. 6(1)(f) (our legitimate interest in fixing errors) |
-| Contact form on our website (optional): your email address, your name if you give it, the message, and the language of the page | Answering you | Our private Discord channel (see section 6) | Art. 6(1)(b) (handling your request) |
+| Contact form on our website (optional): your email address, your name if you give it, the message, and the language of the page | Answering you | Our mailbox (see section 6) | Art. 6(1)(b) (handling your request) |
 
 We do not process card numbers, bank account numbers, government ID numbers, special categories of data (Art. 9 GDPR), location or contacts. We do not make automated decisions or profile you.
 
@@ -47,9 +47,9 @@ The app downloads public files (such as exchange-rate and public-holiday lists) 
 
 ## 6. Recipients and transfers outside the EEA/UK
 
-We do not sell or share your personal data. Messages sent with the contact form pass through Cloudflare (Cloudflare, Inc., USA), which runs the form's server, and are delivered to a private channel on Discord (Discord Inc., USA) that only we can read. Your IP address is used for a moment to limit spam and is not stored. To receive and store feedback emails we use Apple's iCloud Mail (Apple Inc., USA, and Apple Distribution International Ltd., Ireland, for users in the EEA). Your email may therefore be stored in the USA or other countries where Apple has data centers.
+We do not sell or share your personal data. Messages sent with the contact form pass through Cloudflare (Cloudflare, Inc., USA), which runs the form's server, and Resend (Resend, Inc., USA), which delivers them as an email to our mailbox. Neither stores the message for us. Your IP address is used for a moment to limit spam and is not stored. To receive and store feedback emails we use Apple's iCloud Mail (Apple Inc., USA, and Apple Distribution International Ltd., Ireland, for users in the EEA). Your email may therefore be stored in the USA or other countries where Apple has data centers.
 
-For transfers to the USA we rely on the certification of Apple, Cloudflare and Discord under the EU-U.S. Data Privacy Framework (and its UK and Swiss extensions) [확인 필요: 게시 직전 Apple·Cloudflare·Discord DPF 인증 유지 여부 확인], and otherwise on the European Commission's Standard Contractual Clauses.
+For transfers to the USA we rely on the certification of Apple, Cloudflare and Resend under the EU-U.S. Data Privacy Framework (and its UK and Swiss extensions) [확인 필요: 게시 직전 Apple·Cloudflare·Resend DPF 인증 유지 여부 확인], and otherwise on the European Commission's Standard Contractual Clauses.
 
 We are based in the Republic of Korea, which the European Commission recognizes as providing an adequate level of data protection (Adequacy Decision of 17 December 2021).
 
