@@ -38,7 +38,7 @@ button:disabled { opacity: .5; cursor: default; }
   <button type="submit" data-t="send">Send</button>
   <p id="status" role="status"></p>
 </form>
-<p class="note" data-t="privacy">We use your email and message only to answer you, and delete them one year after the matter is closed. See the <a href="../en/privacy/">privacy policy</a>. You can also email help@devsworker.com.</p>
+<p class="note" data-t="privacy">We only use your email and message to reply to you, and we delete them a year after your question is settled. See the <a href="../en/privacy/">privacy policy</a>. You can also email help@devsworker.com.</p>
 </main>
 <script>
 const ENDPOINT = "https://supervivo-contact.supervivo.workers.dev/contact";
@@ -51,12 +51,12 @@ const T = {
     email: "Deine E-Mail-Adresse (für unsere Antwort)",
     message: "Nachricht",
     send: "Senden",
-    privacy: 'Wir verwenden deine E-Mail-Adresse und Nachricht nur, um dir zu antworten, und löschen sie ein Jahr nach Abschluss des Anliegens. Siehe <a href="../en/privacy/">Datenschutzerklärung</a>. Du kannst auch an <a href="mailto:help@devsworker.com">help@devsworker.com</a> schreiben.',
+    privacy: 'Wir nutzen deine E-Mail-Adresse und Nachricht nur für unsere Antwort und löschen sie ein Jahr, nachdem dein Anliegen erledigt ist. Mehr dazu in der <a href="../en/privacy/">Datenschutzerklärung</a> (Englisch). Du kannst auch an <a href="mailto:help@devsworker.com">help@devsworker.com</a> schreiben.',
   },
 };
 const S = {
-  en: { sending: "Sending…", sent: "Thanks! Your message was sent. We'll reply to your email.", email: "Please enter a valid email address.", message: "Please write a message (at least 5 characters).", rate: "Too many messages. Please try again in a minute.", fail: "Couldn't send. Please try again, or email help@devsworker.com." },
-  de: { sending: "Wird gesendet…", sent: "Danke! Deine Nachricht wurde gesendet. Wir antworten per E-Mail.", email: "Bitte gib eine gültige E-Mail-Adresse ein.", message: "Bitte schreib eine Nachricht (mindestens 5 Zeichen).", rate: "Zu viele Nachrichten. Bitte versuch es in einer Minute noch einmal.", fail: "Senden fehlgeschlagen. Bitte versuch es noch einmal oder schreib an help@devsworker.com." },
+  en: { sending: "Sending…", sent: "Thanks, we got your message. We'll reply by email.", email: "Please enter a valid email address.", message: "Please write a message (at least 5 characters).", rate: "That's a lot of messages at once. Please wait a minute and try again.", fail: "Something went wrong. Please try again, or email us at help@devsworker.com." },
+  de: { sending: "Wird gesendet…", sent: "Danke, deine Nachricht ist angekommen. Wir antworten dir per E-Mail.", email: "Bitte gib eine gültige E-Mail-Adresse ein.", message: "Bitte schreib eine Nachricht (mindestens 5 Zeichen).", rate: "Das waren gerade zu viele Nachrichten. Warte bitte kurz und versuch es dann noch einmal.", fail: "Das hat leider nicht geklappt. Versuch es bitte noch einmal oder schreib an help@devsworker.com." },
 };
 const asked = new URLSearchParams(location.search).get("lang");
 const lang = asked === "de" || asked === "en" ? asked : (navigator.language || "").toLowerCase().startsWith("de") ? "de" : "en";
