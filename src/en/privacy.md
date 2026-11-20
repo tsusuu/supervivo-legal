@@ -2,6 +2,8 @@
 
 Effective date: 21 November 2026
 
+Also available in: [日本語](https://tsusuu.github.io/supervivo-legal/ja/privacy/) · [繁體中文](https://tsusuu.github.io/supervivo-legal/zh-Hant/privacy/) · [简体中文](https://tsusuu.github.io/supervivo-legal/zh-Hans/privacy/) · [Español](https://tsusuu.github.io/supervivo-legal/es/privacy/) · [Italiano](https://tsusuu.github.io/supervivo-legal/it/privacy/) · [Français](https://tsusuu.github.io/supervivo-legal/fr/privacy/) · [Deutsch](https://tsusuu.github.io/supervivo-legal/de/privacy/) · [Português (Brasil)](https://tsusuu.github.io/supervivo-legal/pt-BR/privacy/)
+
 Supervivo is an iOS app made by Devsworker ("we", "us"). This policy covers what personal data is involved when you use the app or contact us, why, and what rights you have. It applies wherever you use the app, including the European Economic Area (EEA), the United Kingdom and Switzerland.
 
 ## 1. The short version

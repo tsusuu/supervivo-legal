@@ -103,6 +103,13 @@ build("terms.md", "terms", "Supervivo 이용 안내")
 # 해외(1.2.0): 영어 처리방침, 독일 Impressum. 문의 양식은 contact/index.html(손으로 쓴 페이지, 받는 서버는 supervivo-contact Worker)
 build("en/privacy.md", "en/privacy", "Supervivo Privacy Policy", "en")
 build("de/impressum.md", "de/impressum", "Supervivo Impressum", "de")
+# 처리방침 번역(2026-11-21). 영어가 원문, 번역본 끝에 "다르면 영어 원문 우선" 줄
+TRANSLATIONS = [("ja", "Supervivo プライバシーポリシー"), ("zh-Hant", "Supervivo 隱私權政策"), ("zh-Hans", "Supervivo 隐私政策"),
+                ("es", "Política de privacidad de Supervivo"), ("it", "Informativa sulla privacy di Supervivo"),
+                ("fr", "Politique de confidentialité de Supervivo"), ("de", "Datenschutzerklärung von Supervivo"),
+                ("pt-BR", "Política de Privacidade do Supervivo")]
+for code, title in TRANSLATIONS:
+    build(f"{code}/privacy.md", f"{code}/privacy", title, code)
 (ROOT / "index.html").write_text(PAGE.format(lang="ko", title="Supervivo", nav="",
     body='<h1>Supervivo</h1><ul><li><a href="privacy/">개인정보 처리방침</a></li><li><a href="terms/">이용 안내</a></li>'
          '<li><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">이용약관(Apple 표준 사용권 계약)</a></li>'
