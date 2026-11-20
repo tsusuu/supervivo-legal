@@ -14,7 +14,7 @@ Devsworker ("we", "us") makes and runs the iOS app Supervivo ("the app"). This p
 ## 2. Who is responsible (controller)
 
 Devsworker, represented by Choi Yeongseo
-[확인 필요: 사업장 주소 (영문)]
+Moran 1-gil 86, 101-201, Wonju-si, Gangwon 26406, Republic of Korea
 Email: help@devsworker.com
 
 ## 3. What we process, why, and on what legal basis
@@ -36,8 +36,7 @@ All permissions are optional. If you decline one, only the related feature stops
 | Permission | Used for | How |
 |---|---|---|
 | Notifications | Payday, end-of-day and card goal reminders | Scheduled on your device; no outside server is involved |
-
-[확인 필요: 1.2.0에 카메라·사진(영수증 인식)이 들어가면 여기 줄 추가. 인식은 기기 안(Apple Vision)에서만 하고 사진을 보내지 않음.]
+| Camera and Photos | Reading a receipt so you don't have to type it | The photo is read on your device with Apple's on-device text recognition. It is never uploaded. If you keep the photo with the record, it stays only on your device |
 
 Face ID lock uses the iOS "Require Face ID" feature. The app never accesses your face data. Widget amounts are made from the records on your device and are not sent anywhere; you can hide amounts on the Lock Screen in the app's settings.
 
